@@ -3,14 +3,14 @@ import sys
 import glob
 
 
-ser = serial.Serial('COM3')
+ser = serial.Serial('COM4')
 ser.flushInput()
 ser.write(b'h')
 file = open('savedData.txt', 'wb')
 
 while True:
     line = ser.readline()
-    if line == b'I received: 104\r\n':
+    if line == b'Done reading\r\n':
         print("exiting")
         break
     else:
@@ -19,10 +19,10 @@ while True:
 
 file.close()
 
-#['COM'7]
+# ['COM'7]
 
 
-"""
+'''
 def serial_ports():
     if sys.platform.startswith('win'):
         ports = ['COM%s' % (i + 1) for i in range(256)]
@@ -47,4 +47,4 @@ def serial_ports():
 
 if __name__ == '__main__':
     print(serial_ports())
-"""
+'''
