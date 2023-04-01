@@ -8,28 +8,18 @@ print(port)
 
 ser = serial.Serial(port)
 ser.flushInput()
-ser.write(b'h')
+ser.write(b'a')
 
-"""
-file = open("savedData.csv", 'wb')
-while True:
-    line = ser.readline()
-    if line == b'Done reading\r\n':
-        print("exiting")
-        break
-    else:
-        file.write(line)
-file.close()
-"""
 num = 0
-file = None
+file = open("data" + str(num) + ".csv", "wb")
+
 while True:
     line = ser.readline()
+    #print(line)
     if line == b'File:\r\n':
-        if file is not None:
-            file.close()
+        num += 1
+        print("new file!")
         file = open(("data" + str(num) + ".csv"), "wb")
-        continue
     elif line == b'Done reading\r\n':
         print("exiting")
         break
