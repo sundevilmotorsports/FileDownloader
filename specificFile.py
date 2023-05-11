@@ -19,7 +19,6 @@ ser.flush()
 print("doing things...")
 while True:
     line = ser.readline()
-    print(line)
     if line == b'Done reading\r\n':
         print("exiting")
         break
